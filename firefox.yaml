@@ -11,13 +11,16 @@ services:
     environment:
       DISPLAY_WIDTH: 1920
       DISPLAY_HEIGHT: 900
-      USER_ID: 1002
-      GROUP_ID: 1002
+      USER_ID: 1005
+      GROUP_ID: 1006
       UMASK: 022
       TZ: Europe/Amsterdam
       ENABLE_CJK_FONT: 1
     networks:
       - default_net
+    dns:
+      - 1.1.1.1
+      - 1.0.0.1
     ports:
       - target: 5800
         published: 5801
@@ -28,7 +31,7 @@ services:
         source: config
         target: /config
       - type: bind
-        source: /share/Data
+        source: /share/Data/docker-firefox
         target: /storage
       # increase container shared memory size with bind mapping with host
       - type: bind
