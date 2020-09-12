@@ -24,12 +24,12 @@ services:
         protocol: tcp
         mode: host
     volumes:
-      - config:/config
-      - watch:/watch
-      - /share/Data:/output
+      - config:/config:rw
       - storage:/storage:ro
       - /share/Data:/storage/data:ro
       - /share/Downloads:/storage/downloads:ro
+      - watch:/watch:rw
+      - /share/Data:/output:rw
 
 networks:
   portainerce_net:
