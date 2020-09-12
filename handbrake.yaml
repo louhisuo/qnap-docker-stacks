@@ -1,0 +1,41 @@
+version: '3.4'
+
+services:
+  app:
+    image: jlesage/handbrake:v1.22.4
+    deploy:
+      labels:
+        app.version: "v1.3.3"
+      mode: replicated
+      replicas: 1
+    environment:
+      DISPLAY_WIDTH: 1920
+      DISPLAY_HEIGHT: 900
+      USER_ID: 1005
+      GROUP_ID: 1006
+      UMASK: 022
+      TZ: Europe/Amsterdam
+      ENABLE_CJK_FONT: 1
+    networks:
+      - portainerce_net
+    ports:
+      - target: 5800
+        published: 5800
+        protocol: tcp
+        mode: host
+    volumes:
+      - config:/config
+      - watch:/watch
+      - /share/Data:/output
+      - storage:/storage:ro
+      - /share/Data:/storage/data:ro
+      - /share/Downloads:/storage/downloads:ro
+
+networks:
+  portainerce_net:
+    external: true
+
+volumes:
+  config:
+  storage:
+  watch:
