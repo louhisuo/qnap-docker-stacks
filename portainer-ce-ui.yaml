@@ -2,12 +2,8 @@ version: '3.4'
 
 services:
   ui:
-    image: portainer/portainer:1.24.1
-    environment:
-      TZ: Europe/Stockholm
+    image: portainer/portainer-ce:2.0.0
     command: -H unix:///var/run/docker.sock
-    networks:
-      - net
     ports:
       - target: 9000
         published: 9000
@@ -21,11 +17,6 @@ services:
       replicas: 1
       placement:
         constraints: [node.role == manager]
-
-networks:
-  net:
-    driver: overlay
-    attachable: true
 
 volumes:
   data:
