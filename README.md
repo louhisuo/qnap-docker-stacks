@@ -1,2 +1,2 @@
-# qnap-docker-stacks
+# Docker stacks for QNAP deployments
 A collection of Docker Stacks which I use to deploy various containerized applications, using [Portainer CE](https://www.portainer.io/products/community-edition). It is assumed that Docker is running in [Swarm mode](https://docs.docker.com/engine/swarm/) to use these Docker Compose deployment files. Docker I am using is delivered is bundled in [QNAP Container Station](https://www.qnap.com/en/app_releasenotes/list.php?app_choose=container-station).
