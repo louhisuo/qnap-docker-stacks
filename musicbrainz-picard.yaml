@@ -6,8 +6,8 @@ services:
     environment:
       DISPLAY_WIDTH: 1920
       DISPLAY_HEIGHT: 900
-      USER_ID: 1000
-      GROUP_ID: 1000
+      USER_ID: 0
+      GROUP_ID: 0
       UMASK: 022
       TZ: Europe/Amsterdam
       ENABLE_CJK_FONT: 1
