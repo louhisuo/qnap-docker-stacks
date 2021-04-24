@@ -1,36 +1,23 @@
-version: '3.4'
+version: '3.8'
 
 services:
   ui:
-    image: linuxserver/qbittorrent:14.2.5.99202004250119-7015-2c65b79ubuntu18.04.1-ls89
+    image: ghcr.io/linuxserver/qbittorrent:version-14.3.4.99202104180633-7350-2c8f322afubuntu20.04.1
     deploy:
-      labels:
-        app.version: "v4.2.5"
       mode: replicated
       replicas: 1
     environment:
-      PUID: 1005
-      PGID: 1006
+      PUID: 0
+      PGID: 0
       UMASK_SET: 022
       TZ: Europe/Amsterdam
       WEBUI_PORT: 8080
     networks:
-      - qbittorrent_net
-    dns:
-      - 1.1.1.1
-      - 1.0.0.1
+      - qbt-net
     ports:
       - target: 8080
         published: 8080
         protocol: tcp
-        mode: host
-      - target: 16881
-        published: 16881
-        protocol: tcp
-        mode: host
-      - target: 16881
-        published: 16881
-        protocol: udp
         mode: host
     volumes:
       - type: volume
@@ -41,7 +28,7 @@ services:
         target: /downloads
 
 networks:
-  qbittorrent_net:
+  qbt-net:
     external: true
 
 volumes:
