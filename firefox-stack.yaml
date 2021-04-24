@@ -17,9 +17,9 @@ services:
       ENABLE_CJK_FONT: 1
     networks:
       - portainerce_net
-#    dns:
-#      - 1.1.1.1
-#      - 1.0.0.1
+    dns:
+      - 1.1.1.1
+      - 1.0.0.1
     ports:
       - target: 5800
         published: 5801
@@ -32,10 +32,15 @@ services:
       - type: bind
         source: /share/Data/docker-firefox
         target: /storage
-# increase container shared memory size with bind mapping with host
-      - type: bind
-        source: /dev/shm
+# Set container shared memory size to 2GB
+      - type: tmpfs
         target: /dev/shm
+        tmpfs:
+          size: 2147483648
+# increase container shared memory size with bind mapping with host
+#      - type: bind
+#        source: /dev/shm
+#        target: /dev/shm
 
 
 networks:
