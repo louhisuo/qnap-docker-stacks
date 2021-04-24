@@ -12,6 +12,9 @@ services:
       UMASK_SET: 022
       TZ: Europe/Amsterdam
       WEBUI_PORT: 8080
+    dns:
+      - 1.1.1.1
+      - 1.0.0.1
     networks:
       - qbt-net
     ports:
