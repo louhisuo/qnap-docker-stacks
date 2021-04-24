@@ -1,26 +1,25 @@
-version: '3.4'
+# Due to membarrier system call requires docker 20.10.0 or higher to be deployed without customizing docker
+version: '3.8'
 
 services:
   app:
-    image: jlesage/firefox:v1.12.0
+    image: jlesage/firefox:v1.17.1
     deploy:
-      labels:
-        app.version: "v77.0.1"
       mode: replicated
       replicas: 1
     environment:
       DISPLAY_WIDTH: 1920
       DISPLAY_HEIGHT: 900
-      USER_ID: 1005
-      GROUP_ID: 1006
+      USER_ID: 0
+      GROUP_ID: 0
       UMASK: 022
       TZ: Europe/Amsterdam
       ENABLE_CJK_FONT: 1
     networks:
-      - default_net
-    dns:
-      - 1.1.1.1
-      - 1.0.0.1
+      - portainerce_net
+#    dns:
+#      - 1.1.1.1
+#      - 1.0.0.1
     ports:
       - target: 5800
         published: 5801
@@ -33,14 +32,14 @@ services:
       - type: bind
         source: /share/Data/docker-firefox
         target: /storage
-      # increase container shared memory size with bind mapping with host
+# increase container shared memory size with bind mapping with host
       - type: bind
         source: /dev/shm
         target: /dev/shm
 
 
 networks:
-  default_net:
+  portainerce_net:
     external: true
 
 volumes:
