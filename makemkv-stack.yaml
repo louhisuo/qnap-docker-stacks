@@ -12,13 +12,9 @@ services:
       TZ: Europe/Amsterdam
       ENABLE_CJK_FONT: 1
       MAKEMKV_KEY: BETA
-    networks:
-      - portainerce_net
     ports:
       - target: 5800
         published: 5804
-        protocol: tcp
-        mode: host
     volumes:
       - config:/config:rw
       - storage:/storage:rw
@@ -38,8 +34,6 @@ services:
       replicas: 1
 
 networks:
-  portainerce_net:
-    external: true
 
 volumes:
   config:
