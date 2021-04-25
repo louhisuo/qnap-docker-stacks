@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  app:
+    image: jlesage/makemkv:v1.20.3
+    environment:
+      DISPLAY_WIDTH: 1920
+      DISPLAY_HEIGHT: 1080
+      USER_ID: 0
+      GROUP_ID: 0
+      UMASK: 022
+      TZ: Europe/Amsterdam
+      ENABLE_CJK_FONT: 1
+      MAKEMKV_KEY: BETA
+    ports:
+      - target: 5800
+        published: 5804
+    volumes:
+      - config:/config:rw
+      - storage:/storage:ro
+      - type: bind
+        source: /share/Data
+        target: /storage/data
+        read_only: true
+      - type: bind
+        source: /share/Downloads
+        target: /storage/downloads
+        read_only: true
+      - type: bind
+        source: /share/Data
+        target: /output
+    deploy:
+      mode: replicated
+      replicas: 1
+
+networks:
+  portainerce_net:
+    external: true
+
+volumes:
+  config:
+  storage:
