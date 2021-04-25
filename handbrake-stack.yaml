@@ -23,7 +23,7 @@ services:
         mode: host
     volumes:
       - config:/config:rw
-      - storage:/storage:rw
+      - storage:/storage:ro
       - watch:/watch:rw
       - type: bind
         source: /share/Data
