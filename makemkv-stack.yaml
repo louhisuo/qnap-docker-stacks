@@ -33,10 +33,6 @@ services:
       mode: replicated
       replicas: 1
 
-networks:
-  portainerce_net:
-    external: true
-
 volumes:
   config:
   storage:
