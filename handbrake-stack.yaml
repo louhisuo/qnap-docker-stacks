@@ -1,21 +1,19 @@
-version: '3.4'
+version: '3.8'
 
 services:
   app:
-    image: jlesage/handbrake:v1.22.4
-    deploy:
-      labels:
-        app.version: "v1.3.3"
-      mode: replicated
-      replicas: 1
+    image: jlesage/handbrake:v1.23.2
+    cap_add:
+      - SYS_NICE
     environment:
       DISPLAY_WIDTH: 1920
-      DISPLAY_HEIGHT: 900
-      USER_ID: 1005
-      GROUP_ID: 1006
+      DISPLAY_HEIGHT: 1080
+      USER_ID: 0
+      GROUP_ID: 0
       UMASK: 022
       TZ: Europe/Amsterdam
       ENABLE_CJK_FONT: 1
+      APP_NICENESS: 0
     networks:
       - portainerce_net
     ports:
@@ -30,6 +28,9 @@ services:
       - /share/Downloads:/storage/downloads:ro
       - watch:/watch:rw
       - /share/Data:/output:rw
+    deploy:
+      mode: replicated
+      replicas: 1
 
 networks:
   portainerce_net:
