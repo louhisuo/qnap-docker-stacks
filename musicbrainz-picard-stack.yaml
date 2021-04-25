@@ -5,14 +5,14 @@ services:
     image: mikenye/picard:2.6.1
     environment:
       DISPLAY_WIDTH: 1920
-      DISPLAY_HEIGHT: 900
+      DISPLAY_HEIGHT: 1080
       USER_ID: 0
       GROUP_ID: 0
       UMASK: 022
       TZ: Europe/Amsterdam
       ENABLE_CJK_FONT: 1
     volumes:
-      - config:/config
+      - config:/config:rw
       - storage:/storage:rw
       - /share/Data:/storage/data:rw
       - /share/Downloads:/storage/downloads:rw
@@ -21,13 +21,11 @@ services:
     dns:
       - 1.1.1.1
       - 1.0.0.1
+    networks:
+      - portainerce_net
     ports:
       - target: 5800
         published: 5802
-        protocol: tcp
-        mode: host
-    networks:
-      - portainerce_net
     deploy:
       mode: replicated
       replicas: 1

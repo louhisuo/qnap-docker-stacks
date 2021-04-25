@@ -11,6 +11,8 @@ services:
       UMASK: 022
       TZ: Europe/Amsterdam
       ENABLE_CJK_FONT: 1
+    networks:
+      - portainerce_net
     ports:
       - target: 5800
         published: 5803
@@ -28,6 +30,8 @@ services:
       replicas: 1
 
 networks:
+  portainerce_net:
+    external: true
 
 volumes:
   config:
