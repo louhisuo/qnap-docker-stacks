@@ -19,8 +19,6 @@ services:
     ports:
       - target: 5800
         published: 5800
-        protocol: tcp
-        mode: host
     volumes:
       - config:/config:rw
       - storage:/storage:rw
