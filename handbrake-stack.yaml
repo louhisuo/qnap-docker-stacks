@@ -24,10 +24,18 @@ services:
     volumes:
       - config:/config:rw
       - storage:/storage:ro
-      - /share/Data:/storage/data:ro
-      - /share/Downloads:/storage/downloads:ro
       - watch:/watch:rw
-      - /share/Data:/output:rw
+      - type: bind
+        source: /share/Data
+        target: /storage/data
+        read_only:
+      - type: bind
+        source: /share/Downloads
+        target: /storage/downloads
+        read_only:
+      - type: bind
+        source: /share/Data
+        target: /output
     deploy:
       mode: replicated
       replicas: 1
