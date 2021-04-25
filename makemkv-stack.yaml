@@ -21,7 +21,7 @@ services:
         mode: host
     volumes:
       - config:/config:rw
-      - storage:/storage:ro
+      - storage:/storage:rw
       - type: bind
         source: /share/Data
         target: /storage/data
