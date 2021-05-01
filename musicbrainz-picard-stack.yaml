@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   app:
-    image: mikenye/picard:2.6.1
+    image: mikenye/picard:2.6.2
     environment:
       DISPLAY_WIDTH: 1920
       DISPLAY_HEIGHT: 1080
