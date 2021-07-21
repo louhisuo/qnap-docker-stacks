@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   app:
-    image: jlesage/handbrake:v1.23.2
+    image: jlesage/handbrake:v1.24.0
     cap_add:
       - SYS_NICE
     environment:
@@ -21,18 +21,13 @@ services:
         published: 5800
     volumes:
       - config:/config:rw
-      - storage:/storage:rw
       - watch:/watch:rw
       - type: bind
-        source: /share/Data
-        target: /storage/data
+        source: /share/Scratch
+        target: /storage
         read_only: true
       - type: bind
-        source: /share/Downloads
-        target: /storage/downloads
-        read_only: true
-      - type: bind
-        source: /share/Data
+        source: /share/Scratch
         target: /output
     deploy:
       mode: replicated
