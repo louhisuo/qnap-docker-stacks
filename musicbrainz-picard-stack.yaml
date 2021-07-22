@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   app:
-    image: mikenye/picard:2.6.2
+    image: mikenye/picard:2.6.3
     environment:
       DISPLAY_WIDTH: 1920
       DISPLAY_HEIGHT: 1080
@@ -14,8 +14,7 @@ services:
     volumes:
       - config:/config:rw
       - storage:/storage:rw
-      - /share/Data:/storage/data:rw
-      - /share/Downloads:/storage/downloads:rw
+      - /share/Scratch:/storage/data:rw
       - /share/Attic:/storage/attic:rw
       - /share/Music:/storage/music:rw
     dns:
