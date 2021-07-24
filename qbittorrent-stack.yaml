@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   ui:
-    image: ghcr.io/linuxserver/qbittorrent:version-14.3.4.99202104180633-7350-2c8f322afubuntu20.04.1
+    image: ghcr.io/linuxserver/qbittorrent:version-14.3.6.99202107121017-7389-3ac8c97e6ubuntu20.04.1
     deploy:
       mode: replicated
       replicas: 1
@@ -27,7 +27,7 @@ services:
         source: config
         target: /config
       - type: bind
-        source: /share/Data
+        source: /share/Scratch
         target: /downloads
 
 networks:
