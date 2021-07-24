@@ -30,7 +30,7 @@ services:
         source: config
         target: /config
       - type: bind
-        source: /share/Data/docker-firefox
+        source: /share/Scratch
         target: /storage
 # Set container shared memory size to 2GB
       - type: tmpfs
